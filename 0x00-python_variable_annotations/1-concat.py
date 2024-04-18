@@ -5,7 +5,7 @@ def concat(str1: str, str2: str) -> str:
 
     Args:
         str 1 (str): The first number.
-        str 2 (str): The second number.  
+        str 2 (str): The second number.
     Returns:
         float: The sum of the two numbers.
     """
