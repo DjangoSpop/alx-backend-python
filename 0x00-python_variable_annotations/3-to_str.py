@@ -1,11 +1,9 @@
 #!/usr/bin/env python3
+'''Module for task 3.
+'''
+
+
 def to_str(n: float) -> str:
-    """_summary_
-
-    Args:
-        n (float): _description_
-
-    Returns:
-        str: _description_
-    """    
+    '''Cast a floting type number in to a string.
+    '''
     return str(n)

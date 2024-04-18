@@ -1,19 +1,9 @@
 #!/usr/bin/env python3
+'''Modules of task-0.
+'''
 
-"""
-This module provides a function to add two numbers.
-"""
 
 def add(a: float, b: float) -> float:
-    """
-    Adds two numbers and returns the result.
-
-    Args:
-        a (float): The first number.
-        b (float): The second number.
-
-    Returns:
-        float: The sum of the two numbers.
-    """
+    '''Adds two floating-point numbers.
+    '''
     return a + b
-

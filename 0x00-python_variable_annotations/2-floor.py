@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
-def floor(n: float) -> float:
-    """_summary_
+'''Task 2's module.
+'''
 
-    Args:
-        n (float): _description_
 
-    Returns:
-        float: _description_
-    """    
-    return n // 1 if n >= 0 else -(-n // 1)
+import math
+
+
+def floor(a: float) -> int:
+    '''Computes the floor of a floating-point number.
+    '''
+    return math.floor(a)
