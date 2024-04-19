@@ -1,21 +1,21 @@
 #!/usr/bin/env python3
-from typing import Dict, TypeVar
+from typing import Mapping, Any, Union, TypeVar
 
 T = TypeVar('T')
 
-
-def safely_get_value(dct: Dict[str, T], key: str, default: T = None) -> T:
+def safely_get_value(dct: Mapping[Any, Any], key: Any, default: Union[T, None] = None) -> Union[Any, T]:
     """_summary_
 
     Args:
-        dct (Dict[str, T]): _description_
-        key (str): _description_
-        default (T, optional): _description_. Defaults to None.
+        dct (Mapping[Any, Any]): _description_
+        key (Any): _description_
+        default (Union[T, None], optional): _description_. Defaults to None.
 
     Returns:
-        T: _description_
+        Union[Any, T]: _description_
     """    
     if key in dct:
         return dct[key]
     else:
         return default
+    
