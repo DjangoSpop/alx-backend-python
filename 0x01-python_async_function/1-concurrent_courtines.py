@@ -4,8 +4,8 @@ from random import uniform
 import asyncio
 
 async def wait_random(max_delay: int) -> float:
+    
     """_summary_
-
     Args:
         max_delay (int): _description_
 
@@ -18,11 +18,9 @@ async def wait_random(max_delay: int) -> float:
 
 async def wait_n(n: int, max_delay: int) -> List[float]:
     """_summary_
-
     Args:
         n (int): _description_
         max_delay (int): _description_
-
     Returns:
         List[float]: _description_
     """    
