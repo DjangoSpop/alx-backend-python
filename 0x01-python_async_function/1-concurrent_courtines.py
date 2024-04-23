@@ -1,31 +1,29 @@
 #!/usr/bin/env python3
-from typing import List
-from random import uniform
+"""
+Module for concurrent coroutines
+"""
 import asyncio
-
-
-async def wait_random(max_delay: int) -> float:
-    """_summary_
-    Args:
-        max_delay (int): _description_
-
-    Returns:
-        float: _description_
-    """
-    delay = uniform(0, max_delay)
-    await asyncio.sleep(delay)
-    return delay
+from typing import List
+wait_random = __import__('0-basic_async_syntax').wait_random
 
 
 async def wait_n(n: int, max_delay: int) -> List[float]:
-    """_summary_
-    Args:
-        n (int): _description_
-        max_delay (int): _description_
-    Returns:
-        List[float]: _description_
     """
-    tasks = [wait_random(max_delay) for _ in range(n)]
-    delays = await asyncio.gather(*tasks)
-    delays.sort()
-    return delays
+    Spawns wait_random n times with the specified max_delay and returns the
+    list of all the delays (float values) in ascending order.
+
+    Args:
+        n (int): The number of times to spawn wait_random.
+        max_delay (int): The maximum delay value for each spawned coroutine.
+
+    Returns:
+        List[float]: The list of delays in ascending order.
+    """
+    delays = []
+    coroutines = [wait_random(max_delay) for _ in range(n)]
+
+    for coroutine in asyncio.as_completed(coroutines):
+        delay = await coroutine
+        delays.append(delay)
+
+    return sorted(delays)
