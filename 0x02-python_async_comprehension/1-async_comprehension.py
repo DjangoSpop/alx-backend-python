@@ -1,15 +1,16 @@
 #!/usr/bin/env python3
-import asyncio
-import random
-from types import list
-async_generator = __import__('0-async_generator').async_generator
+"""
+Module containing an async comprehension function.
+"""
+from typing import List
+from 0-async_generator import async_generator
 
 
-
-async def async_comprehension() -> list[float]:
+async def async_comprehension() -> List[float]:
     """
-    Coroutine that collects 10 random numbers using an async comprehensing over
-    an async generator.
+    Collects 10 random numbers using async comprehension over async_generator.
+
+    Returns:
+        List[float]: A list of 10 random numbers.
     """
-  
-    return [i async for i in async_generator()]
+    return [num async for num in async_generator()]
