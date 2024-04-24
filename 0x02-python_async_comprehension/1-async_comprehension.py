@@ -1,16 +1,14 @@
 
 #!/usr/bin/env python3
-"""
-Module for practicing async comprehensions in Python.
-"""
-import asyncio
-import random
-from typing import List
+from . import async_generator
 
-async def async_comprehension() -> List[float]:
+
+async def async_comprehensiosn():
     """
-    Collects 10 random numbers using async comprehension over async_generator.
-
+    Summary of the function.
+s
     Returns:
-        List[float]: A list of 10 random numbers.
+        List[int]: List of numbers generated asynchronously.
     """
+    # your function goes here
+    return [num async for num in async_generator()]
