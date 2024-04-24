@@ -19,5 +19,6 @@ async def async_generator() -> AsyncGenerator[float, None]:
     """
     # your function goes here
     for _ in range(10):
+        # sleep for 1 second before yielding a value
         await asyncio.sleep(1)
         yield random.uniform(0, 10)
