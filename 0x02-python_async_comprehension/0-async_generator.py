@@ -5,9 +5,10 @@ Module for practicing async comprehensions in Python.
 import asyncio
 import random
 from typing import List
+from typing import AsyncGenerator
 
 
-async def async_generator() -> List[float]:
+async def async_generator() -> AsyncGenerator[float, None]:
     """
     Asynchronous generator that yields
     10 random numbers between 0 and 10
