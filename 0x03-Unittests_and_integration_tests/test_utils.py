@@ -51,7 +51,7 @@ class TestGetJson(unittest.TestCase):
 
 
 class TestMemoize(unittest.TestCase):
-    """ test class to tes utils.memoize"""
+    """ test class to test utils.memoize"""
 
     def test_memoize(self):
         """ Tests the function when calling a_property twice,
@@ -74,3 +74,4 @@ class TestMemoize(unittest.TestCase):
             test_class.a_property()
             test_class.a_property()
             mock.assert_called_once()
+            
