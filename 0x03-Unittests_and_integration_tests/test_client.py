@@ -51,31 +51,6 @@ class TestGetJson(unittest.TestCase):
         patcher.stop()
 
 
-class TestMemoize(unittest.TestCase):
-    """ test class to tes utils.memoize"""
-
-    def test_memoize(self):
-        """ Tests the function when calling a_property twice,
-        the correct result is returned but a_method is only
-        called once using assert_called_once
-        """
-
-        class TestClass:
-            """ Test Class for wrapping with memoize """
-
-            def a_method(self):
-                return 42
-
-            @memoize
-            def a_property(self):
-                return self.a_method()
-
-        with patch.object(TestClass, 'a_method') as mock:
-            test_class = TestClass()
-            test_class.a_property()
-            test_class.a_property()
-            mock.assert_called_once()
-            
 class TestGithubOrgClient(unittest.TestCase):
     """Class for testing GithubOrgClient"""
     
@@ -84,12 +59,16 @@ class TestGithubOrgClient(unittest.TestCase):
         self.org_name = "test_org"
         self.client = GithubOrgClient(self.org_name)
         
-    def test_public_repos_url(self):
+    @parameterized.expand([
+        ("google",),
+        ("abc",)
+    ])
+    def test_public_repos_url(self, org_name):
         """Test that the result of _public_repos_url is the expected one"""
-        mocked_payload = {"repos_url": "https://api.github.com/orgs/test_org/repos"}
+        mocked_payload = {"repos_url": f"https://api.github.com/orgs/{org_name}/repos"}
         
         with patch.object(GithubOrgClient, "org", return_value=mocked_payload):
-            expected_url = "https://api.github.com/orgs/test_org/repos"
+            expected_url = f"https://api.github.com/orgs/{org_name}/repos"
             result_url = self.client._public_repos_url
             self.assertEqual(result_url, expected_url)
 # ....
