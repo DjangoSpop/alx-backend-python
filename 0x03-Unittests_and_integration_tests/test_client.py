@@ -3,10 +3,8 @@
 '''
 from parameterized import parameterized
 import unittest
-from utils import (access_nested_map, get_json, memoize)
+from utils import access_nested_map, get_json, memoize
 from unittest.mock import patch
-from unittest.mock import patch
-from utils import memoize
 from github_org_client import GithubOrgClient
 
 
@@ -78,21 +76,21 @@ class TestMemoize(unittest.TestCase):
             test_class.a_property()
             mock.assert_called_once()
             
-    class TestGithubOrgClient(unittest.TestCase):
-        """Class for testing GithubOrgClient"""
+class TestGithubOrgClient(unittest.TestCase):
+    """Class for testing GithubOrgClient"""
+    
+    def setUp(self):
+        """Set up the test case"""
+        self.org_name = "test_org"
+        self.client = GithubOrgClient(self.org_name)
         
-        def setUp(self):
-            """Set up the test case"""
-            self.org_name = "test_org"
-            self.client = GithubOrgClient(self.org_name)
-            
-        def test_public_repos_url(self):
-            """Test that the result of _public_repos_url is the expected one"""
-            mocked_payload = {"repos_url": "https://api.github.com/orgs/test_org/repos"}
-            
-            with patch.object(GithubOrgClient, "org", return_value=mocked_payload):
-                expected_url = "https://api.github.com/orgs/test_org/repos"
-                result_url = self.client._public_repos_url
-                self.assertEqual(result_url, expected_url)
-                
+    def test_public_repos_url(self):
+        """Test that the result of _public_repos_url is the expected one"""
+        mocked_payload = {"repos_url": "https://api.github.com/orgs/test_org/repos"}
+        
+        with patch.object(GithubOrgClient, "org", return_value=mocked_payload):
+            expected_url = "https://api.github.com/orgs/test_org/repos"
+            result_url = self.client._public_repos_url
+            self.assertEqual(result_url, expected_url)
+# ....
     
